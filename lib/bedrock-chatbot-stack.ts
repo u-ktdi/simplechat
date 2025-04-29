@@ -22,6 +22,7 @@ export class BedrockChatbotStack extends cdk.Stack {
     super(scope, id, props);
 
     const modelId = props?.modelId || 'us.amazon.nova-lite-v1:0';
+    const api_url = "https://5165-34-75-38-138.ngrok-free.app/generate";
 
     // Cognito User Poolの作成
     const userPool = new cognito.UserPool(this, 'ChatbotUserPool', {
@@ -158,6 +159,7 @@ export class BedrockChatbotStack extends cdk.Stack {
       role: lambdaRole,
       environment: {
         MODEL_ID: modelId,
+        API_URL: api_url
       },
     });
 

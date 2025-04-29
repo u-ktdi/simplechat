@@ -7,9 +7,6 @@ from botocore.exceptions import ClientError
 import urllib.request
 
 
-API_URL = "https://5165-34-75-38-138.ngrok-free.app/generate"
-
-
 # Lambda コンテキストからリージョンを抽出する関数
 def extract_region_from_arn(arn):
     # ARN 形式: arn:aws:lambda:region:account-id:function:function-name
@@ -23,6 +20,7 @@ bedrock_client = None
 
 # モデルID
 MODEL_ID = os.environ.get("MODEL_ID", "us.amazon.nova-lite-v1:0")
+API_URL = os.environ.get("API_URL", "https://5165-34-75-38-138.ngrok-free.app/generate")
 
 def lambda_handler(event, context):
     try:
