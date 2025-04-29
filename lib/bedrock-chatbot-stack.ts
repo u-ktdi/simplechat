@@ -140,15 +140,6 @@ export class BedrockChatbotStack extends cdk.Stack {
       ]
     });
 
-    // Bedrockへのアクセス権限を追加
-    lambdaRole.addToPolicy(new iam.PolicyStatement({
-      actions: [
-        'bedrock:InvokeModel',
-        'bedrock:InvokeModelWithResponseStream'
-      ],
-      resources: ['*']
-    }));
-
     // Lambda function
     const chatFunction = new lambda.Function(this, 'ChatFunction', {
       runtime: lambda.Runtime.PYTHON_3_10,
